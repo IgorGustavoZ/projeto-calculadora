@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos/style.css">
+    <link rel="shortcut icon" href="imagens/favicon.png" type="image/x-icon">
+    <title>Calculadora</title>
+</head>
+<body>
+    <header>
+        <h1>Calculadora</h1>
+    </header>
+    <main>
+        <div id="tela">
+           <input type="text" name="num" id="res" onkeyup="analisador()"  onmousedown="desativar()">
+        </div>
+        <div id="calc">
+            <div id="num">
+                <div class="btn-num" onmousedown="numero1()"><p>1</p></div>
+                <div class="btn-num" onmousedown="numero2()"><p>2</p></div>
+                <div class="btn-num" onmousedown="numero3()"><p>3</p></div>
+                <div class="btn-num" onmousedown="numero4()"><p>4</p></div>
+                <div class="btn-num" onmousedown="numero5()"><p>5</p></div>
+                <div class="btn-num" onmousedown="numero6()"><p>6</p></div>
+                <div class="btn-num" onmousedown="numero7()"><p>7</p></div>
+                <div class="btn-num" onmousedown="numero8()"><p>8</p></div>
+                <div class="btn-num" onmousedown="numero9()"><p>9</p></div>
+                <div class="btn-num" onmousedown="numero0()"><p>0</p></div>
+                <div class="btn-num" id="btn-ig" onmousedown="resultado()"><p>=</p></div>
+            </div>
+            <div id="opr">
+                <div class="btn-num" id="clear" onmousedown="limpar()"><p>C</p></div>
+                <div class="btn-num" onmousedown="subtracao()"><p>-</p></div>
+                <div class="btn-num" id="somar" onmousedown="somar()"><p>+</p></div>
+                <div class="btn-num" onmousedown="multiplicacao()"><p>x</p></div>
+                <div class="btn-num" onmousedown="divisao()"><p>÷</p></div> <!--raiz qu-->
+                <div class="btn-num" title="Potência" onmousedown="potenciacao()"><p>^</p></div>  
+                <div class="btn-num" onmousedown="resultado()"><p>=</p></div>  
+            </div>
+        </div>    <!-- potencia-->
+    </main>
+    <footer>
+        <p>Feito por <a href="#">Igor Gustavo</a></p>
+    </footer>
+    <script src="javascript/script.js">
+    </script>
+</body>
+</html>

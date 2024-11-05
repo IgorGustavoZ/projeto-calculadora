@@ -2,11 +2,14 @@ var text = document.getElementById('res')
 
 var acao
 var num = ''
-var num1 = []
+var num1 = 0
 var pos = 0
 var t = []
 var c=0
+var n
+var p
 text.focus()
+var cont = 0
 
 function numero1(){
     text.value += '1'
@@ -52,15 +55,8 @@ function numero0(){
 function limpar(){
     text.value = ''
     num = ''
-    num1 = []
+    num1 = 0
     c = 0
-}
-
-function desativar(){
-    text.removeAttribute('readonly')
-    text.value = ''
-    num = ''
-    num1 = []
 }
 
 function analisador(){
@@ -68,191 +64,164 @@ function analisador(){
     var res //para ver operador
     t = dig.split('')//separa cada palavra no array t
     var ult = t.length-1 //acha o ultimo elemento do array
-    n = t[ult] //da uma ajeitada, alguma vezes nao faz a conta certa!
-    if(c!=0 && isNaN(Number(t[ult])) == false){
-        var n
+    
+    if(c>0 && isNaN(Number(t[ult])) == false){
+        n = t[ult] 
         num += n
-    }
-    for(var i = 0; i<t.length;i++){
-        if(t[i]=='+'){
+    }else if(num.length == 0){
+        res == false
+    }else if(t[ult] == '+'){
+        if(cont == 0){
             res = true
+            acao = 'somar'
+            num1 = Number(num)
+            num = 0 
+            cont++
+        }else{
+            alert('Mais de um operador selecionado!')
+            text.value = dig //resolver!!!
+            cont=0
         }
+        
+        
     }
 
-    if(res == true){ //analisa o operador
-        acao = 'somar'
-        num1[pos] = Number(num)
-        num = 0
-        pos++
-    } else if(isNaN(Number(dig)) == true )
+    if(res == true){ 
+        //analisar se o ultimo numero digitado é operador, se nao entra no else if
+    } else if(isNaN(t[ult]) == true && c>0 && t[ult] != '+')
     {
-        alert('ATENÇÃO! só são aceitos números e operadores!')
+        alert('ATENÇÃO! só são aceitos números e operadores e deve haver ao menos um número para haver operador!')
         text.value = ''
         num = ''
         num1 = []
         c = 0
     }
     //alert(acao)
-    //alert(Number(num))
+    //alert(num)
+    //alert(num1)
     c++
 }
 
-/*function desativar(){
-    text.removeAttribute('readonly')
-    text.innerHTML = ''
-}*/
-
 function somar(){
-    if(num.length != 0){ 
-    text.value += '+'
-    acao = 'somar'
+    if(cont==0){
+        if(num.length != 0){ 
+            text.value += '+'
+            acao = 'somar'
 
-    num1[pos] = Number(num)
-    num = 0
-    pos++
+            num1 = Number(num)
+            num = 0
+            pos++
+            cont++
     }
+    }else{
+        alert('Mais de um operador selecionado!')
+    }
+
 }
 
 function subtracao(){
-    if(num.length != 0){
+    if(cont == 0){
+        if(num.length != 0){
     text.value += '-'
     acao = 'subtrair'
 
     num1[pos] = Number(num)
     num = 0
-    pos++
+    cont++
     }
+    }else{
+        alert('Mais de um operador selecionado!')
+    }
+    
 }
 
 function multiplicacao(){
-    if(num.length != 0){
-    text.value += 'x'
-    acao = 'multiplicar'
+    if(cont == 0){
+        if(num.length != 0){
+            text.value += 'x'
+            acao = 'multiplicar'
 
-    num1[pos] = Number(num)
-    num = 0
-    pos++
+            num1[pos] = Number(num)
+            num = 0
+            cont++
     }
+    }else{
+        alert('Mais de um operador selecionado!')
+    }
+    
 }
 
 function divisao(){
-    if(num.length != 0){
-    text.value += '÷'
-
-    num1[pos] = Number(num)
-    num = 0
-    pos++
+    if(cont == 0){
+        if(num.length != 0){
+            text.value += '÷'
+            num1[pos] = Number(num)
+            num = 0
+            cont++
     }
+    }else{
+        alert('Mais de um operador selecionado!')
+    }
+    
 }
 
 function potenciacao(){
-    if(num.length != 0){
-    text.value += '^'
-    acao = 'potencia'
+    if(cont == 0){
+      if(num.length != 0){
+            text.value += '^'
+            acao = 'potencia'
 
-    num1[pos] = Number(num)
-    num = 0
-    pos++
+            num1[pos] = Number(num)
+            num = 0
+            cont++
+            }  
+    } else {
+        alert('Mais de um operador selecionado!')
     }
+    
 }
 
 function resultado(){
     if(num.length != 0){
     var tot = conta(num1, Number(num)) //manda os numeros para analisar
     text.value = `${tot}`
-    num1[pos] = Number(num)
-    text.toggleAttribute('readonly')
+    for(var i=0;i<pos;i++)
+    {
+        num1[i] = null
+    }
+    //text.toggleAttribute('readonly')
     }
     
     //alert(`${Number(num)}`)
     //alert(`${Number(num1)}`)
+    pos = 0
+    cont = 0
 }
 
 function conta(n1,n2){
    switch(acao){
     case 'somar':{
-        var tot = 0
-        for(var i=0;i<pos;i++){
-            tot += n1[i]
-            n1[i] = null // limpando para evitar problema
-        }
-        tot += n2
-        num = tot
-        pos = 0
-        
-        return tot
+        num = n1+n2
+        return n1 + n2
     }
     case 'subtrair':{
-        var tot = 0
-        if(pos > 1){ // 2 2 |2 > n2| mais de 2 numeros
-        for(var i=0;i<pos;i++){
-            if(n1[i+1] == null){
-                break
-            }else{
-                tot += n1[i] - n1[i+1]
-                n1[i] = null
-            }
-        }
-            tot = n1[i-1] - n2
-            num = tot 
-            pos = 0
-            return tot
-        }else{ //apenas 2 numeros
-            tot = n1[0] - n2
-            num = tot 
-            pos = 0
-            return tot
-        } 
+        num = n1 - n2
+        return n1 - n2
     }
     case 'multiplicar':{
-        if(pos > 1){
-        var tot = 1
-          for(var i=0;i<pos;i++){
-            tot *= n1[i]
-            n1[i] = null
-        }  
-          
-        } else{
-            tot = n2 * n1
-            num = tot
-            pos = 0
-            return tot
-        }
-        tot *= n2
-        num = tot
-        pos = 0
-        return tot
+        num = n1 * n2
+        return n1 * n2
     }
     case 'dividir':{
-        if(n1==0 && n2==0){
-            return 'Indefinido!'
-        }else{
-            var tot = n1[0]
-            for(var i=0;i<pos;i++){
-                if(n1[i+1]==null)
-                {
-                    break
-                }else{
-                    tot /= n1[i+1]
-                    n1[i] = null //nao funcionando *arrumar*
-                }
-                
-            }
-            tot /= n2
-            num = tot
-            pos = 0
-            
-            return tot
-        }
-        
+        num = n1/n2
+        return n1/n2   
     }
     case 'potencia':{
         var pot = n1
         for(i=1;i<n2;i++){
             pot *= n1
-        } //nao feito
+        } 
         num = pot
-        //alert(`${pot}`) aqui esta com problema de supercarregamento de dados!! arrume
         return pot
     }
     default:

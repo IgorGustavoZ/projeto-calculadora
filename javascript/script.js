@@ -1,3 +1,6 @@
+//arrumar para nao aparecer aquelas numeros quando se tem numeros muito grande
+//limitar o tamanho do numero no input!
+//arrumar colocar o numero no teclado, ao adicionar funciona ok! porem quando vc tira um numero ele erra o resultado!
 const text = document.getElementById('res')
 
 var ans
@@ -5,8 +8,6 @@ var ans
 text.addEventListener('keypress', ({key}) => {
     if(key == 'Enter'){
         ans = true
-    }else if(key == 'Backspace'){
-        alert('deu certo doidao')
     }
 })
 
@@ -115,12 +116,12 @@ function analisador(){
             cont = 0
         }
     }else if(t[ult] == 'x' || t[ult] == '*' || t[ult] == 'X'){
-        if(t[0] == 'X' || T[0] == 'x' || t[ult] == '*' ){
+        if(t[0] == 'X' || t[0] == 'x' || t[0] == '*'){
             text.value = '' 
             pri = 0
             cont = 0
         }
-        if(cont == 0){
+        else if(cont == 0){
             opr = true
             acao = 'multiplicar'
             num1 = Number(num)
@@ -137,7 +138,7 @@ function analisador(){
             pri = 0
             cont = 0
         }
-        if(cont == 0){
+        else if(cont == 0){
             opr = true
             acao = 'dividir'
             num1 = Number(num)

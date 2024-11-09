@@ -1,13 +1,22 @@
-var text = document.getElementById('res')
+const text = document.getElementById('res')
+
+var ans
+
+text.addEventListener('keypress', ({key}) => {
+    if(key == 'Enter'){
+        ans = true
+    }else if(key == 'Backspace'){
+        alert('deu certo doidao')
+    }
+})
+
 
 var acao
 var num = ''
 var num1 = 0
-var pos = 0
 var t = []
-var c=0
+var pri = 0
 var n
-var p
 text.focus()
 var cont = 0
 
@@ -56,50 +65,130 @@ function limpar(){
     text.value = ''
     num = ''
     num1 = 0
-    c = 0
+    pri = 0
 }
 
 function analisador(){
     var dig = text.value //o texto total
-    var res //para ver operador
+    var opr //para ver operador
     t = dig.split('')//separa cada palavra no array t
     var ult = t.length-1 //acha o ultimo elemento do array
     
-    if(c>0 && isNaN(Number(t[ult])) == false){
+   
+    if(ans != true){
+        if(isNaN(Number(t[ult])) == false){
         n = t[ult] 
         num += n
-    }else if(num.length == 0){
-        res == false
     }else if(t[ult] == '+'){
-        if(cont == 0){
-            res = true
+        if(t[0] == '+'){
+            text.value = '' 
+            pri = 0
+            cont = 0
+        }
+        else if(cont == 0){
+            opr = true
             acao = 'somar'
             num1 = Number(num)
-            num = 0 
+            num = ''
+            cont++
+             
+        }else{
+            alert('Mais de um operador selecionado!')
+            text.value = '' 
+            cont = 0
+        }
+    }else if(t[ult] == '-'){
+        if(t[0] == '-'){
+            text.value = '' 
+            pri = 0
+            cont = 0
+        }
+        else if(cont == 0){
+            opr = true
+            acao = 'subtrair'
+            num1 = Number(num)
+            num = ''
             cont++
         }else{
             alert('Mais de um operador selecionado!')
-            text.value = dig //resolver!!!
-            cont=0
+            text.value = '' 
+            cont = 0
         }
-        
-        
+    }else if(t[ult] == 'x' || t[ult] == '*' || t[ult] == 'X'){
+        if(t[0] == 'X' || T[0] == 'x' || t[ult] == '*' ){
+            text.value = '' 
+            pri = 0
+            cont = 0
+        }
+        if(cont == 0){
+            opr = true
+            acao = 'multiplicar'
+            num1 = Number(num)
+            num = ''
+            cont++
+        }else{
+            alert('Mais de um operador selecionado!')
+            text.value = '' 
+            cont = 0
+        }
+    }else if(t[ult] == '÷' || t[ult] == '/'){
+        if(t[0] == '÷' || t[0] == '/'){
+            text.value = '' 
+            pri = 0
+            cont = 0
+        }
+        if(cont == 0){
+            opr = true
+            acao = 'dividir'
+            num1 = Number(num)
+            num = ''
+            cont++
+        }else{
+            alert('Mais de um operador selecionado!')
+            text.value = '' 
+            cont = 0
+        }
+    }else if(t[ult] == '^'){
+        if(cont == 0){
+            opr = true
+            acao = 'potencia'
+            num1 = Number(num)
+            num = ''
+            cont++
+        }else{
+            alert('Mais de um operador selecionado!')
+            text.value = '' 
+            cont = 0
+        }
     }
-
-    if(res == true){ 
+    else if(num.length == 0){
+        num = ''
+        num1 = 0
+        pri = 0
+        opr == false  
+    }
+    if(opr == true){ 
         //analisar se o ultimo numero digitado é operador, se nao entra no else if
-    } else if(isNaN(t[ult]) == true && c>0 && t[ult] != '+')
+    } else if(isNaN(t[ult]) == true && pri>0 && t[ult] != '+')
     {
         alert('ATENÇÃO! só são aceitos números e operadores e deve haver ao menos um número para haver operador!')
         text.value = ''
         num = ''
         num1 = []
-        c = 0
+        pri = 0
     }
+    }else if(ans == true){
+        resultado()
+    }
+    
     //alert(acao)
     //alert(num)
     //alert(num1)
-    c++
+     
+    
+    pri++ 
+    
+    
 }
 
 function somar(){
@@ -110,11 +199,12 @@ function somar(){
 
             num1 = Number(num)
             num = 0
-            pos++
             cont++
     }
     }else{
         alert('Mais de um operador selecionado!')
+        text.value = '' 
+        cont = 0
     }
 
 }
@@ -122,15 +212,17 @@ function somar(){
 function subtracao(){
     if(cont == 0){
         if(num.length != 0){
-    text.value += '-'
-    acao = 'subtrair'
+        text.value += '-'
+        acao = 'subtrair'
 
-    num1[pos] = Number(num)
-    num = 0
-    cont++
+        num1 = Number(num)
+        num = 0
+        cont++
     }
     }else{
         alert('Mais de um operador selecionado!')
+        text.value = '' 
+        cont = 0
     }
     
 }
@@ -141,12 +233,14 @@ function multiplicacao(){
             text.value += 'x'
             acao = 'multiplicar'
 
-            num1[pos] = Number(num)
+            num1 = Number(num)
             num = 0
             cont++
     }
     }else{
         alert('Mais de um operador selecionado!')
+        text.value = '' 
+        cont = 0
     }
     
 }
@@ -155,12 +249,15 @@ function divisao(){
     if(cont == 0){
         if(num.length != 0){
             text.value += '÷'
-            num1[pos] = Number(num)
+            acao = 'dividir'
+            num1 = Number(num)
             num = 0
             cont++
     }
     }else{
         alert('Mais de um operador selecionado!')
+        text.value = '' 
+        cont = 0
     }
     
 }
@@ -171,31 +268,31 @@ function potenciacao(){
             text.value += '^'
             acao = 'potencia'
 
-            num1[pos] = Number(num)
+            num1 = Number(num)
             num = 0
             cont++
             }  
-    } else {
+    }else{
         alert('Mais de um operador selecionado!')
+        text.value = '' 
+        cont = 0
     }
     
 }
 
 function resultado(){
-    if(num.length != 0){
+    if(num.length != 0 && num1 != 0){
+    
     var tot = conta(num1, Number(num)) //manda os numeros para analisar
     text.value = `${tot}`
-    for(var i=0;i<pos;i++)
-    {
-        num1[i] = null
-    }
+    
     //text.toggleAttribute('readonly')
     }
     
     //alert(`${Number(num)}`)
     //alert(`${Number(num1)}`)
-    pos = 0
     cont = 0
+    ans = false
 }
 
 function conta(n1,n2){

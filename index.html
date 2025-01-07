@@ -13,30 +13,30 @@
     </header>
     <main>
         <div id="tela">
-           <input type="text" name="num" id="res" onkeyup="analisador()" maxlength="12">
+           <p id="tela-operacoes"></p>
         </div>
         <div id="calc">
             <div id="num">
-                <div class="btn-num" onmousedown="numero1()"><p>1</p></div>
-                <div class="btn-num" onmousedown="numero2()"><p>2</p></div>
-                <div class="btn-num" onmousedown="numero3()"><p>3</p></div>
-                <div class="btn-num" onmousedown="numero4()"><p>4</p></div>
-                <div class="btn-num" onmousedown="numero5()"><p>5</p></div>
-                <div class="btn-num" onmousedown="numero6()"><p>6</p></div>
-                <div class="btn-num" onmousedown="numero7()"><p>7</p></div>
-                <div class="btn-num" onmousedown="numero8()"><p>8</p></div>
-                <div class="btn-num" onmousedown="numero9()"><p>9</p></div>
-                <div class="btn-num" onmousedown="numero0()"><p>0</p></div>
+                <div class="btn-num" id="n1"><p>1</p></div>
+                <div class="btn-num" id="n2" onmousedown="numero2()"><p>2</p></div>
+                <div class="btn-num" id="n3" onmousedown="numero3()"><p>3</p></div>
+                <div class="btn-num" id="n4" onmousedown="numero4()"><p>4</p></div>
+                <div class="btn-num" id="n5" onmousedown="numero5()"><p>5</p></div>
+                <div class="btn-num" id="n6" onmousedown="numero6()"><p>6</p></div>
+                <div class="btn-num" id="n7" onmousedown="numero7()"><p>7</p></div>
+                <div class="btn-num" id="n8" onmousedown="numero8()"><p>8</p></div>
+                <div class="btn-num" id="n9" onmousedown="numero9()"><p>9</p></div>
+                <div class="btn-num" id="n0" onmousedown="numero0()"><p>0</p></div>
                 <div class="btn-num" id="btn-ig" onmousedown="resultado()"><p>=</p></div>
             </div>
             <div id="opr">
-                <div class="btn-num" id="clear" onmousedown="limpar()"><p>C</p></div>
-                <div class="btn-num" onmousedown="subtracao()"><p>-</p></div>
-                <div class="btn-num" id="somar" onmousedown="somar()"><p>+</p></div>
-                <div class="btn-num" onmousedown="multiplicacao()"><p>x</p></div>
-                <div class="btn-num" onmousedown="divisao()"><p>÷</p></div> 
+                <div class="btn-num" title="Limpar" id="clear" onmousedown="limpar()"><p>C</p></div>
+                <div class="btn-num" title="Subtração" onmousedown="subtracao()"><p>-</p></div>
+                <div class="btn-num" id="somar" title="Soma" onmousedown="somar()"><p>+</p></div>
+                <div class="btn-num" title="Multiplicacão" onmousedown="multiplicacao()"><p>x</p></div>
+                <div class="btn-num" title="Divisão" onmousedown="divisao()"><p>÷</p></div> 
                 <div class="btn-num" title="Potência" onmousedown="potenciacao()"><p>^</p></div>  
-                <div class="btn-num" onmousedown="resultado()"><p>=</p></div>  
+                <div class="btn-num btn-res" onmousedown="resultado()"><p>=</p></div>  
             </div>
         </div>   
     </main>

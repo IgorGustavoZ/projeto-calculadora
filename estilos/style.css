@@ -52,17 +52,15 @@ div#tela{
     color: white;
 }
 
-div #res{
+div #tela-operacoes{
    background-color: rgb(78, 78, 78);
    border: none;
    color: white;
    font-size: 30px;
    width: 200px;
+   overflow: hidden;
 }
 
-div #res:focus-visible{
-    outline: none;
-}
 
 div.btn-num{
     cursor: pointer;
@@ -107,7 +105,6 @@ div#opr{
     display: flex;
     flex-wrap: wrap;
     float: right;
-    /*margin: 22px;*/
     gap: 10px;
 }
 
@@ -119,7 +116,6 @@ footer{
     font-size: 15px;
     transform: translateY(250px);
     color: white;
-    
 }
 
 footer a{

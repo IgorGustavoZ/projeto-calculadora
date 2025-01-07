@@ -15,367 +15,203 @@ body.addEventListener('keypress', ({key}) => {
     if(key == 'Enter')  resultado()   
 })
 
+//fazer essa funcao!
+const pararNumeros = (()=>{
 
-function analisador(){
-    var dig = text.value //o texto total
-    //var opr //para ver operador
-    t = dig.split('')//separa cada palavra no array t
-    var ult = t.length-1 //acha o ultimo elemento do array
+})
+
+document.getElementById('n1').addEventListener('click',()=>{
+    text.innerHTML += '1'
+    operando1 += '1'
+})
     
-   
-    //alert(ult)
-    
-if(t[ult] != undefined){
+document.getElementById('n2').addEventListener('click',()=>{
+    text.innerHTML += '2'
+    operando1 += '2'
+})
 
-    qtd_inicial++
-   
-    //alert(qtd_inicial)
-    // ans é para o enter
-    if(ans != true && isNaN(Number(t[ult])) == true){
+document.getElementById('n3').addEventListener('click',()=>{
+    text.innerHTML += '3'
+    operando1 += '3'
+})
 
-        if(qtd_inicial <= t.length){
-            num = ''
-
-            t.filter((valor)=>{
-                if(isNaN(valor) == false)
-                    
-                    num += valor
-                    
-               
-            })
-            
-            if(t[ult] == '+'){
-                if(t[0] == '+'){
-                    text.value = '' 
-                    pri = 0
-                    cont = 0
-                    qtd_inicial = 0
-                }
-                else if(cont == 0){
-                    opr = true
-                    acao = 'somar'
-                    alert(num)
-                    num1 = Number(num)
-                    alert(num1)
-                    num = ''
-                    qtd_inicial = 0
-                    cont++   
-                }else{
-                    alert('Mais de um operador selecionado!')
-                    text.value = ''
-                    num1 = 0 
-                    num = 0
-                    qtd_inicial = 0
-                    cont = 0
-                }
-            }
-        }else if(qtd_inicial > t.length){
-            
-            num = ''
-            //alert(t.length)
-            //alert(qtd_inicial)
-            for(var cnt = 0; cnt<t.length;cnt++)
-            {
-                n = t[ult]
-        }
-    }else if(t[ult] == '-'){
-            num += t[ult]
-    }
-    else if(t[ult] == '-'){
-        if(t[0] == '-'){
-            text.value = '' 
-            pri = 0
-            cont = 0
-            qtd_inicial = 0
-        }
-        else if(cont == 0){
-            opr = true
-            acao = 'subtrair'
-            num1 = Number(num)
-            num = ''
-            qtd_inicial = 0
-            cont++
-        }else{
-            alert('Mais de um operador selecionado!')
-            text.value = '' 
-            cont = 0
-        }
-    }else if(t[ult] == 'x' || t[ult] == '*' || t[ult] == 'X'){
-        if(t[0] == 'X' || t[0] == 'x' || t[0] == '*'){
-            text.value = '' 
-            pri = 0
-            cont = 0
-            qtd_inicial = 0
-        }
-        else if(cont == 0){
-            opr = true
-            acao = 'multiplicar'
-            qtd_inicial = 0
-            
-            num1 = Number(num)
-            
-            num = ''
-            cont++
-        }else{
-            alert('Mais de um operador selecionado!')
-            text.value = '' 
-            num1 = 0 
-            qtd_inicial = 0
-            cont = 0
-        }
-    }else if(t[ult] == '÷' || t[ult] == '/'){
-        if(t[0] == '÷' || t[0] == '/'){
-            text.value = '' 
-            pri = 0
-            cont = 0
-            qtd_inicial = 0
-        }
-        else if(cont == 0){
-            opr = true
-            acao = 'dividir'
-            qtd_inicial = 0
-            num1 = Number(num)
-            num = ''
-            cont++
-        }else{
-            alert('Mais de um operador selecionado!')
-            text.value = '' 
-            num1 = 0 
-            qtd_inicial = 0
-            cont = 0
-        }
-    }else if(t[ult] == '^'){
-        if(cont == 0){
-            opr = true
-            acao = 'potencia'
-            qtd_inicial = 0
-            num1 = Number(num)
-            num = ''
-            cont++
-        }else{
-            alert('Mais de um operador selecionado!')
-            text.value = '' 
-            num1 = 0 
-            qtd_inicial = 0
-            cont = 0
-        }
-    }
-    else if(num.length == 0){
-        num = ''
-        num1 = 0
-        pri = 0
-        opr = false  
-    }
-    else if(isNaN(Number(t[ult])) == true)
-    {
-        alert('ATENÇÃO! só são aceitos números e operadores e deve haver ao menos um número para haver operador!')
-        text.value = ''
-        num = ''
-        num1 = []
-        pri = 0
-    }
-    
-}
-    //alert(acao)
-    //alert(num)
-    //alert(num1)
-     
-    
-    pri++ 
-    
-    
-}
-}
+document.getElementById('n4').addEventListener('click',()=>{
+    text.innerHTML += '4'
+    operando1 += '4'
+})
 
 
+document.getElementById('n5').addEventListener('click',()=>{
+    text.innerHTML += '5'
+    operando1 += '5'
+})
+
+document.getElementById('n6').addEventListener('click',()=>{
+    text.innerHTML += '6'
+    operando1 += '6'
+})
 
 
-function numero1(){
-    text.value += '1'
-    num += '1'
-}
-function numero2(){
-    text.value += '2'
-    num += '2'
-}
-function numero3(){
-    text.value += '3'
-    num += '3'
-}
-function numero4(){
-    text.value += '4'
-    num += '4'
-}
-function numero5(){
-    text.value += '5'
-    num += '5'
-}
-function numero6(){
-    text.value += '6'
-    num += '6'
-}
-function numero7(){
-    text.value += '7'
-    num += '7'
-}
-function numero8(){
-    text.value += '8'
-    num += '8'
-}
-function numero9(){
-    text.value += '9'
-    num += '9'
-}
-function numero0(){
-    text.value += '0'
-    num += '0'
-}
+document.getElementById('n7').addEventListener('click',()=>{
+    text.innerHTML += '7'
+    operando1 += '7'
+})
+
+document.getElementById('n8').addEventListener('click',()=>{
+    text.innerHTML += '8'
+    operando1 += '8'
+})
+
+document.getElementById('n9').addEventListener('click',()=>{
+    text.innerHTML += '9'
+    operando1 += '9'
+})
+
+document.getElementById('n0').addEventListener('click',()=>{
+    text.innerHTML += '0'
+    operando1 += '0'
+})
 
 function limpar(){
-    text.value = ''
-    num = ''
-    num1 = 0
-    pri = 0
-    qtd_inicial = 0
+    text.innerHTML = ''
+    operando1 = ''
+    operando2 = 0
+    contOperacoes = 0
 }
 
-
-
-
 function somar(){
-    if(cont==0){
-        if(num.length != 0){ 
-            text.value += '+'
-            acao = 'somar'
+    if(contOperacoes==0){
+        if(operando1.length != 0){ 
+            text.innerHTML += '+'
+            operacao = 'somar'
 
-            num1 = Number(num)
-            num = 0
-            cont++
+            operando2 = Number(operando1)
+            operando1 = 0
+            contOperacoes++
     }
     }else{
         alert('Mais de um operador selecionado!')
-        text.value = '' 
-        cont = 0
+        text.innerHTML = '' 
+        contOperacoes = 0
     }
 
 }
 
 function subtracao(){
-    if(cont == 0){
-        if(num.length != 0){
-        text.value += '-'
-        acao = 'subtrair'
+    if(contOperacoes == 0){
+        if(operando1.length != 0){
+        text.innerHTML += '-'
+        operacao = 'subtrair'
 
-        num1 = Number(num)
-        num = 0
-        cont++
+        operando2 = Number(operando1)
+        operando1 = 0
+        contOperacoes++
     }
     }else{
         alert('Mais de um operador selecionado!')
-        text.value = '' 
-        cont = 0
+        text.innerHTML = '' 
+        contOperacoes = 0
     }
     
 }
 
 function multiplicacao(){
-    if(cont == 0){
-        if(num.length != 0){
-            text.value += 'x'
-            acao = 'multiplicar'
+    if(contOperacoes == 0){
+        text.innerHTML += 'x'
+        operacao = 'multiplicar'
 
-            num1 = Number(num)
-            num = 0
-            cont++
-    }
+        operando2 = Number(operando1)
+        operando1 = 0
+        contOperacoes++
     }else{
         alert('Mais de um operador selecionado!')
-        text.value = '' 
-        cont = 0
+        text.innerHTML = '' 
+        contOperacoes = 0
     }
     
 }
 
 function divisao(){
-    if(cont == 0){
-        if(num.length != 0){
-            text.value += '÷'
-            acao = 'dividir'
-            num1 = Number(num)
-            num = 0
-            cont++
-    }
+    if(contOperacoes == 0){
+        text.innerHTML += '÷'
+        operacao = 'dividir'
+        operando2 = Number(operando1)
+        operando1 = 0
+        contOperacoes++
     }else{
         alert('Mais de um operador selecionado!')
-        text.value = '' 
-        cont = 0
+        text.innerHTML = '' 
+        contOperacoes = 0
     }
     
 }
 
 function potenciacao(){
-    if(cont == 0){
-      if(num.length != 0){
-            text.value += '^'
-            acao = 'potencia'
+    if(contOperacoes == 0){
+        text.innerHTML += '^'
+        operacao = 'potencia'
 
-            num1 = Number(num)
-            num = 0
-            cont++
-            }  
+        operando2 = Number(operando1)
+        operando1 = 0
+        contOperacoes++          
     }else{
         alert('Mais de um operador selecionado!')
-        text.value = '' 
-        cont = 0
+        text.innerHTML = '' 
+        contOperacoes = 0
     }
     
 }
 
 function resultado(){
-    var tot
-    //alert(num)
+    let numerosAntesdoPonto = 0
+    const resultado = conta(operando2, Number(operando1)) //manda os numeros para realizar a conta
+    let resultadoArray = []
+
+    resultadoArray = String(resultado).split('')
+    console.log(resultadoArray)
+    if(resultadoArray.length >= 17){
+        text.innerHTML = ''
+        for(let val of resultadoArray){
+            if(resultadoArray[val] == undefined) break
+            else numerosAntesdoPonto++
+        }
+        resultadoArray.map((valor,ind)=>{
+            if(ind<numerosAntesdoPonto+4) text.innerHTML += valor
+        })
+        text.innerHTML += '...'
+    }else if(resultado == Infinity) text.innerHTML = 'Infinito'
+    else text.innerHTML = `${resultado}`
+   
     
-    if(num.length != 0 && num1 != 0){
-    tot = conta(num1, Number(num)) //manda os numeros para analisar
-    text.value = `${tot}`
-    }//else if(num1 == 0){
-    //     limpar()
-    // }
-    
-    alert(num)
-    alert(num1)
-    cont = 0
-    qtd_inicial = String(num).length
-    //alert(qtd_inicial)
-    num1 = 0
-    ans = false
-    tst = true //teste
+    contOperacoes = 0
+    operando2 = 0
 }
 
 function conta(n1,n2){
-   switch(acao){
+   switch(operacao){
     case 'somar':{
-        num = n1+n2
+        operando1 = n1+n2
         return n1 + n2
     }
     case 'subtrair':{
-        num = n1 - n2
+        operando1 = n1 - n2
         return n1 - n2
     }
     case 'multiplicar':{
-        num = n1 * n2
+        operando1 = n1 * n2
         return n1 * n2
     }
     case 'dividir':{
-        num = n1/n2
+        if(n1 == 0 && n2 == 0) return 'Indefinido'
+        operando1 = n1/n2
         return n1/n2   
     }
     case 'potencia':{
-        var pot = n1
+        let pot = n1
         for(i=1;i<n2;i++){
             pot *= n1
         } 
-        num = pot
+        operando1 = pot
         return pot
     }
     default:

@@ -1,23 +1,17 @@
 //arrumar para nao aparecer aquelas numeros quando se tem numeros muito grande
 //limitar o tamanho do numero no input!
 //arrumar colocar o numero no teclado, ao adicionar funciona ok! porem quando vc tira um numero ele erra o resultado! RESOLVIDO
-// Nem sempre esta salvando o numero certo, provalvemente erro em leitura em variavel!!!!!!!!!!
+//quero que quando de um numero infino ex: 0.3333... que nao seja possivel usar nenhum numero para evitar bugs 
+const text = document.getElementById('tela-operacoes')
+const body = document.body
 
-const text = document.getElementById('res')
-var ans
-var verif = false
-var qtd_inicial = 0
-var acao
-var num = ''
-var num1 = 0
-var t = []
-var pri = 0
-var n
-text.focus()
-var cont = 0
-var tst
+let operacao = '' 
+let operando1 = ''
+let operando2 = 0 
+let contOperacoes = 0 //conta o numero de operadores
 
-text.addEventListener('keypress', ({key}) => {
+//para que seja possivel o uso do enter pelo usuario
+body.addEventListener('keypress', ({key}) => {
     if(key == 'Enter')  resultado()   
 })
 
@@ -191,7 +185,7 @@ if(t[ult] != undefined){
     
     
 }
-
+}
 
 
 

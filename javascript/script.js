@@ -1,6 +1,3 @@
-//arrumar para nao aparecer aquelas numeros quando se tem numeros muito grande
-//limitar o tamanho do numero no input!
-//arrumar colocar o numero no teclado, ao adicionar funciona ok! porem quando vc tira um numero ele erra o resultado! RESOLVIDO
 //quero que quando de um numero infino ex: 0.3333... que nao seja possivel usar nenhum numero para evitar bugs 
 const text = document.getElementById('tela-operacoes')
 const body = document.body
